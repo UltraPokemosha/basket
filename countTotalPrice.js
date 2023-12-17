@@ -1,0 +1,1 @@
+export const countTotalPrice = (price, amount) => price * amount

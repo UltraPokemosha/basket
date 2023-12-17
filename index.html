@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>basket</title>
+  </head>
+  <body>
+    <section class="menu">
+      <main class="menu__content">
+        <div class="menu__item">
+          <img src="" alt="" class="menu__item-img" />
+          <h2 class="menu__item-title">title 1</h2>
+          <p class="menu__item-description">description 1</p>
+          <div class="menu__item-info">
+            <p class="menu__item-weight"><span>350</span>гр</p>
+            <p class="menu__item-price"><span>200</span>р</p>
+            <div class="menu__item-size">
+              <span class="menu__item-size-title">Порция</span>
+              <select class="menu__item-porsion">
+                <option value="small">Маленькая</option>
+                <option value="medium">Средняя</option>
+                <option value="large">Большая</option>
+              </select>
+            </div>
+            <div class="menu__item-amount">
+              <button class="menu__item-amount-remove" disabled>-</button>
+              <span>0</span>
+              <button class="menu__item-amount-add">+</button>
+            </div>
+            <p class="menu__item-total-price"><span>0</span>р</p>
+          </div>
+          <button class="menu__item-add-to-basket">Добавить в корзину</button>
+        </div>
+
+        <div class="menu__item">
+          <img src="" alt="" class="menu__item-img" />
+          <h2 class="menu__item-title">title 2</h2>
+          <p class="menu__item-description">description 2</p>
+          <div class="menu__item-info">
+            <p class="menu__item-weight"><span>420</span>гр</p>
+            <p class="menu__item-price"><span>250</span>р</p>
+            <div class="menu__item-size">
+              <span class="menu__item-size-title">Порция</span>
+              <select class="menu__item-porsion">
+                <option value="small">Маленькая</option>
+                <option value="medium">Средняя</option>
+                <option value="large">Большая</option>
+              </select>
+            </div>
+            <div class="menu__item-amount">
+              <button class="menu__item-amount-remove" disabled>-</button>
+              <span>0</span>
+              <button class="menu__item-amount-add">+</button>
+            </div>
+            <p class="menu__item-total-price"><span>0</span>р</p>
+          </div>
+          <button class="menu__item-add-to-basket">Добавить в корзину</button>
+        </div>
+
+        <div class="menu__item">
+          <img src="" alt="" class="menu__item-img" />
+          <h2 class="menu__item-title">title 3</h2>
+          <p class="menu__item-description">description 3</p>
+          <div class="menu__item-info">
+            <p class="menu__item-weight"><span>400</span>гр</p>
+            <p class="menu__item-price"><span>300</span>р</p>
+            <div class="menu__item-size">
+              <span class="menu__item-size-title">Порция</span>
+              <select class="menu__item-porsion">
+                <option value="small">Маленькая</option>
+                <option value="medium">Средняя</option>
+                <option value="large">Большая</option>
+              </select>
+            </div>
+            <div class="menu__item-amount">
+              <button class="menu__item-amount-remove" disabled>-</button>
+              <span>0</span>
+              <button class="menu__item-amount-add">+</button>
+            </div>
+            <p class="menu__item-total-price"><span>0</span>р</p>
+          </div>
+          <button class="menu__item-add-to-basket">Добавить в корзину</button>
+        </div>
+      </main>
+
+      <button class="basket-button basket-button_open">Корзина</button>
+
+      <footer class="menu__order">
+        <div>
+          <h2 class="menu__order-title">Ваш заказ</h2>
+          <ul>
+            <li class="menu__order-li menu__order-li_weight">
+              Вес (гр): <span>0</span>гр
+            </li>
+            <li class="menu__order-li menu__order-li_amount">
+              Количество (шт): <span>0</span>шт
+            </li>
+            <li class="menu__order-li menu__order-li_total-price">
+              Обшая цена (Р): <span>0</span>р
+            </li>
+            <li class="menu__order-li menu__order-li_service">
+              Услуга (10%): <span>0</span>р
+            </li>
+          </ul>
+        </div>
+        <div class="menu__order-price-to-pay">
+          <h3 class="menu__order-price-to-pay-title">Итого : <span>0</span></h3>
+          <button class="menu__order-pay">Оплатить</button>
+        </div>
+      </footer>
+    </section>
+
+    <section class="basket">
+      <button class="basket-button basket-button_close">Закрыть</button>
+      <div class="basket__container"></div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
