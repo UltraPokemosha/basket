@@ -17,6 +17,21 @@ function registerProduct(product){
   basketProducts.push(busketProduct);
 }
 
+function renderPorsionProduct(menuItemPrice, menuItemTotalPrice, index){
+  const currentProduct = products[index];
+  const currentBasketProduct = basketProducts[index];
+
+  const basketItem = basketContainer.childNodes[index];
+
+  menuItemPrice.textContent = currentProduct.price;
+  menuItemTotalPrice.textContent = currentProduct.totalPrice;
+
+  const basketItemPrice = basketItem.querySelector('.basket__item-price').querySelector('span');
+  basketItemPrice.textContent = currentBasketProduct.price;
+  const basketItemTotalPrice = basketItem.querySelector('.basket__item-total-price').querySelector('span');
+  basketItemTotalPrice.textContent = currentBasketProduct.totalPrice;
+}
+
 const makeProductId = (productTitle) => {
   return productTitle.split(' ').join('');
 }
@@ -71,12 +86,7 @@ for(let i = 0; i < menuItems.length; i++){
       handleSelectChoice(products, basketProducts, i, e.target.value);
       const menuSelect = menuItem.querySelector('.menu__item-porsion');
       menuSelect.value = e.target.value;
-      menuItemPrice.textContent = currentProduct.price;
-      menuItemTotalPrice.textContent = currentProduct.totalPrice;
-      const basketItemPrice = basketContainer.childNodes[i].querySelector('.basket__item-price').querySelector('span')
-      basketItemPrice.textContent = currentBasketProduct.price;
-      const basketItemTotalPrice = basketContainer.childNodes[i].querySelector('.basket__item-total-price').querySelector('span');
-      basketItemTotalPrice.textContent = currentBasketProduct.totalPrice;
+      renderPorsionProduct(menuItemPrice, menuItemTotalPrice, i);
     })
 
     addBasketAmountButton.addEventListener('click', () => {
@@ -108,12 +118,7 @@ for(let i = 0; i < menuItems.length; i++){
     handleSelectChoice(products, basketProducts, i, e.target.value);
     const select = basketContainer.childNodes[i].querySelector('.basket__item-porsion');
     select.value = e.target.value;
-    menuItemPrice.textContent = currentProduct.price;
-    menuItemTotalPrice.textContent = currentProduct.totalPrice;
-    const basketItemPrice = basketContainer.childNodes[i].querySelector('.basket__item-price').querySelector('span');
-    basketItemPrice.textContent = currentBasketProduct.price;
-    const basketItemTotalPrice = basketContainer.childNodes[i].querySelector('.basket__item-total-price').querySelector('span');
-    basketItemTotalPrice.textContent = currentBasketProduct.totalPrice;
+    renderPorsionProduct(menuItemPrice, menuItemTotalPrice, i);
   })
 
   addAmountButton.addEventListener('click', () => {
