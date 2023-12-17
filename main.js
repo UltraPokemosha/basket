@@ -66,20 +66,46 @@ for(let i = 0; i < menuItems.length; i++){
 
   renderBasket(currentBasketProduct);
 
+  const addAmountButton = menuItem.querySelector('.menu__item-amount-add');
+  const removeAmountButton = menuItem.querySelector('.menu__item-amount-remove');
+
+
+  function decrementAmount() {
+    const currentProduct = products[i];
+    currentProduct.amount -= 1;
+    handleAmountClick(products, menuItemAmount, menuItemTotalPrice, i);
+    if(currentProduct.amount < 1){
+      removeAmountButton.setAttribute('disabled', true);
+      basketContainer.childNodes[i].querySelector('.basket__item-amount-remove').setAttribute('disabled', true)
+    }
+  }
+
+  function incrementAmount() {
+    const currentProduct = products[i];
+    currentProduct.amount += 1;
+    handleAmountClick(products, menuItemAmount, menuItemTotalPrice, i);
+    if(currentProduct.amount >= 1){
+      removeAmountButton.removeAttribute('disabled');
+      basketContainer.childNodes[i].querySelector('.basket__item-amount-remove').removeAttribute('disabled');
+    }
+  }
+
   const addToBasketButton = menuItem.lastElementChild;
   addToBasketButton.addEventListener('click', () => {
 
     const addBasketAmountButton = basketContainer.childNodes[i].querySelector('.basket__item-amount-add');
     const removeBasketAmountButton = basketContainer.childNodes[i].querySelector('.basket__item-amount-remove');
 
-    currentBasketProduct.isAdded = true;
-    basketContainer.childNodes[i].classList.add('basket__item_added');
-
     const removeFromBasketButton = basketContainer.childNodes[i].querySelector('.basket__item-remove-from-basket');
     removeFromBasketButton.addEventListener('click', () => {
       currentBasketProduct.isAdded = false;
       basketContainer.childNodes[i].classList.remove('basket__item_added');
+      addBasketAmountButton.removeEventListener('click', incrementAmount)
+      removeBasketAmountButton.removeEventListener('click', decrementAmount)
     })
+
+    currentBasketProduct.isAdded = true;
+    basketContainer.childNodes[i].classList.add('basket__item_added');
 
     const select = basketContainer.childNodes[i].querySelector('.basket__item-porsion');
     select.addEventListener('change', (e) => {
@@ -89,29 +115,10 @@ for(let i = 0; i < menuItems.length; i++){
       renderPorsionProduct(menuItemPrice, menuItemTotalPrice, i);
     })
 
-    addBasketAmountButton.addEventListener('click', () => {
-      currentProduct.amount += 1;
-      handleAmountClick(products, menuItemAmount, menuItemTotalPrice, i);
-      if(currentProduct.amount >= 1){
-        removeAmountButton.removeAttribute('disabled');
-        basketContainer.childNodes[i].querySelector('.basket__item-amount-remove').removeAttribute('disabled');
-      }
-    })
+    addBasketAmountButton.addEventListener('click', incrementAmount)
     
-    removeBasketAmountButton.addEventListener('click', () => {
-      currentProduct.amount -= 1;
-      handleAmountClick(products, menuItemAmount, menuItemTotalPrice, i);
-      if(currentProduct.amount < 1){
-        removeAmountButton.setAttribute('disabled', true);
-        basketContainer.childNodes[i].querySelector('.basket__item-amount-remove').setAttribute('disabled', true)
-      }
-    })
+    removeBasketAmountButton.addEventListener('click', decrementAmount)
   })
-
-
-
-  const addAmountButton = menuItem.querySelector('.menu__item-amount-add');
-  const removeAmountButton = menuItem.querySelector('.menu__item-amount-remove');
 
   const menuSelect = menuItem.querySelector('.menu__item-porsion');
   menuSelect.addEventListener('change', (e) => {
